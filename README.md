@@ -14,4 +14,4 @@ TBA
 ## Further development
 TBA
 ____
-First tests on Feb 3rd, 2019, indicate that the Ravennodes is working on Ubuntu 18.04.
+First tests on Feb 3rd, 2019, indicate that Ravennodes is working on Ubuntu 18.04.
