@@ -41,7 +41,6 @@ exit
 #### To start the Ravennodes crawler
 ```
 ~/Ravennodes/start.sh
-
 ```
 
 Data output will be available in `~/Ravennodes/data/export`
