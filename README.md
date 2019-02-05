@@ -7,7 +7,7 @@ Ravennodes is currently being developed to estimate the size of the Ravencoin ne
 - Changed parameters to support Ravencoin
 - Turned off Tor network support.
 
-## Dependencies:
+## Dependencies
 - Python 2.7
 - [Redis](https://redislabs.com/)
 
@@ -29,14 +29,13 @@ pip install -r requirements.txt
 #Update GeoIP
 bash geoip/update.sh
 ```
-#### Start redis service:
+#### Start redis service
 ```
 #Login as admin
 sudo -i
 #Update /proc/sys/net/core/somaxconn
 nano /proc/sys/net/core/somaxconn
 	#Change value to 511
-	#ctrl-x, Y, ENTER
 #Disable THP
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 #Update /etc/security/limits.conf
