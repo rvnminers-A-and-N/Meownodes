@@ -12,7 +12,7 @@ Ravennodes is currently being developed to estimate the size of the Ravencoin ne
 - [Redis](https://redislabs.com/)
 
 ## Steps on setting up a machine to run Ravennodes 
-### Ubuntu 16 GB Machine:
+### Ubuntu 18.04, 16GB RAM Machine:
 #### Install redis 
 ```
 cd ~/
