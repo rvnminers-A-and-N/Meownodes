@@ -31,20 +31,29 @@ bash geoip/update.sh
 ```
 #### Start redis service:
 ```
+#Login as admin
 sudo -i
+#Update /proc/sys/net/core/somaxconn
 nano /proc/sys/net/core/somaxconn
 	#Change value to 511
+	#ctrl-x, Y, ENTER
+#Disable THP
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
-redis-server /etc/redis/redis.conf &
-exit
+#Update /etc/security/limits.conf
+nano /etc/security/limits.conf
+	#Add the following:
+	* soft nofile 1000000
+	* hard nofile 1000000
+#Start Redis Server
+redis-server /etc/redis/redis.conf
 ```
 #### To start the Ravennodes crawler
+Open a new console and start the crawler:
 ```
 ~/Ravennodes/start.sh
 ```
-
-Data output will be available in `~/Ravennodes/data/export`
-
+Data output will be available in `~/Ravennodes/data/export/5241564e`
+Process logs  will be available in `/Ravennodes/log`
 ## Further development
 TBA
 
