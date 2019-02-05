@@ -52,6 +52,7 @@ Open a new console and start the crawler:
 ~/Ravennodes/start.sh
 ```
 Data output will be available in `~/Ravennodes/data/export/5241564e`
+
 Process logs  will be available in `/Ravennodes/log`
 ___
 
