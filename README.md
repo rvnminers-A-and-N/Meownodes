@@ -29,6 +29,22 @@ pip install -r requirements.txt
 #Update GeoIP
 bash geoip/update.sh
 ```
+#### Update open file limits to prevent Ravennodes crashing on IO errors
+```
+# Edit the following files:
+sudo nano /etc/security/limits.conf
+	#Add the following:
+	* soft nofile 1000000
+	* hard nofile 1000000
+ 	root soft nofile 1000000
+	root hard nofile 1000000
+sudo nano /etc/systemd/user.conf
+	#Change the following setting:
+	DefaultLimitNOFILE=1000000
+sudo nano /etc/systemd/system.conf 
+	#Change the following setting:
+	DefaultLimitNOFILE=1000000
+```
 #### Start redis service
 ```
 #Login as admin
@@ -38,11 +54,6 @@ nano /proc/sys/net/core/somaxconn
 	#Change value to 511
 #Disable THP
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
-#Update /etc/security/limits.conf
-nano /etc/security/limits.conf
-	#Add the following:
-	* soft nofile 1000000
-	* hard nofile 1000000
 #Start Redis Server
 redis-server /etc/redis/redis.conf
 ```
