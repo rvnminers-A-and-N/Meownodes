@@ -109,7 +109,7 @@ apt-get update
 apt-get install mariadb mariadb-server
 
 #php & hhvm
-sudo apt install php7.2-cli hhvm  
+sudo apt install php7.2-cli hhvm php5-mysqlnd
 ```
 
 # MYSQL PERMISSIONS
