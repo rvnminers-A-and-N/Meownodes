@@ -1,13 +1,15 @@
 # RAVENODES DATABASE SCHEMA SETUP
 # written by push
 
-*To create the Database use dbcreate.sql like*
-
-*mysql -u root -p somepasswordifset < dbcreate.sql or run*
-
-*mysql -u root and type the following commands*
-
-
+*To create the Database use dbcreate.sql like:*
+```
+mysql -u root -p somepasswordifset < dbcreate.sql 
+```
+*or run*
+```
+mysql -u root 
+```
+*and type the following commands:*
 
 ```CREATE DATABASE ravenstatus
 CREATE DATABASE ravenstatus;
