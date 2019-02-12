@@ -12,8 +12,8 @@ mysql -u root
 *and type the following commands:*
 
 ```CREATE DATABASE ravenstatus
-CREATE ravenstatus;
-USE DATABASE ravenstatus;
+CREATE DATABASE ravenstatus;
+USE ravenstatus;
 CREATE TABLE `nodes` (
   `id` int(12) NOT NULL AUTO_INCREMENT,
   `ip` varchar(32) NOT NULL,
