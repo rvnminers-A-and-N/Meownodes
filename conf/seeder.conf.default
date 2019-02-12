@@ -16,7 +16,7 @@ debug = False
 export_dir = data/export/5241564e
 
 # Minimum age for exported nodes
-min_age = 28800
+min_age = 3600
 
 # Relative path to DNS zone file containing exported nodes in A/AAAA records
 zone_file = data/zone/seed.bitnodes.io.zone

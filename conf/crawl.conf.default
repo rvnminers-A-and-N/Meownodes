@@ -27,7 +27,7 @@ debug = False
 source_address = 0.0.0.0
 
 # Protocol version to use for outgoing version message
-protocol_version = 70018
+protocol_version = 70019
 
 # User agent (BIP 0014) to use for outgoing version message
 # -----------------------------------------------------------------------------
@@ -51,10 +51,10 @@ socket_timeout = 15
 cron_delay = 10
 
 # Take full network snapshot at most at every given interval
-snapshot_delay = 240
+snapshot_delay = 900
 
 # Max. age for peering node to be included in crawl set
-max_age = 28800
+max_age = 3600
 
 # Limit max. peers per node to be included in crawl set
 peers_per_node = 500
