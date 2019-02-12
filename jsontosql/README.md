@@ -90,7 +90,7 @@ MariaDB [ravenstatus]> select * from nodes where timefound LIKE '15494095%'
 
 
 
-# DEPENDANCIES
+# DEPENDENCIES
 
 ``` bash
 # CENTOS/Redhat
