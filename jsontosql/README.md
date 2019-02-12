@@ -107,6 +107,9 @@ add-apt-repository 'deb [arch=amd64,i386,ppc64el] https://mirrors.evowise.com/ma
 apt-get update
 # Install MariaDB
 apt-get install mariadb mariadb-server
+
+#php & hhvm
+sudo apt install php7.2-cli hhvm  
 ```
 
 # MYSQL PERMISSIONS
