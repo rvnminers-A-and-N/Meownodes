@@ -1,5 +1,5 @@
 CREATE DATABASE ravenstatus;
-USE DATABASE ravenstatus;
+USE ravenstatus;
 CREATE TABLE `nodes` (
   `id` int(12) NOT NULL AUTO_INCREMENT,
   `ip` varchar(32) NOT NULL,
