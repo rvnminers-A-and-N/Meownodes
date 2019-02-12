@@ -88,15 +88,22 @@ Querying Nodes from a specific Unix Date Range
 MariaDB [ravenstatus]> select * from nodes where timefound LIKE '15494095%'
 ```
 
-
-
 # DEPENDENCIES
 
 ``` bash
 # CENTOS/Redhat
 yum install mariadb mariadb-server
 
-# Debian/Ubuntu
+# Debian/Ubuntu:
+# Update Ubuntu
+apt-get update && apt-get upgrade
+# Add the MariaDB repository
+apt-get install software-properties-common
+apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+add-apt-repository 'deb [arch=amd64,i386,ppc64el] https://mirrors.evowise.com/mariadb/repo/10.1/ubuntu xenial main'
+# Update your package list
+apt-get update
+# Install MariaDB
 apt-get install mariadb mariadb-server
 ```
 
