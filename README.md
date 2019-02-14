@@ -59,6 +59,7 @@ echo never > /sys/kernel/mm/transparent_hugepage/enabled
 sysctl vm.overcommit_memory=1
 #Start Redis Server
 redis-server /etc/redis/redis.conf
+#Alternatively, run redis in the background with redis-server /etc/redis/redis.conf --daemonize yes
 ```
 #### To start the Ravennodes crawler
 Open a new console and start the crawler:
