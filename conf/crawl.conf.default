@@ -51,10 +51,10 @@ socket_timeout = 15
 cron_delay = 10
 
 # Take full network snapshot at most at every given interval
-snapshot_delay = 900
+snapshot_delay = 480
 
 # Max. age for peering node to be included in crawl set
-max_age = 3600
+max_age = 28800
 
 # Limit max. peers per node to be included in crawl set
 peers_per_node = 500
