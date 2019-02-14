@@ -62,6 +62,8 @@ sysctl vm.overcommit_memory=1
 #Start Redis Server
 redis-server /etc/redis/redis.conf
 #Alternatively, run redis in the background with redis-server /etc/redis/redis.conf --daemonize yes
+
+#Make sure the file redis.sock is made in /tmp/
 ```
 #### To start the Ravennodes crawler
 Open a new console and start the crawler:
