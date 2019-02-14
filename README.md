@@ -32,13 +32,15 @@ bash geoip/update.sh
 ```
 #### Update open file limits to prevent Ravennodes crashing on IO errors
 ```
-# Edit the following files:
+# Edit the following file:
 sudo nano /etc/security/limits.conf
 	#Add the following:
 	* soft nofile 1000000
 	* hard nofile 1000000
  	root soft nofile 1000000
 	root hard nofile 1000000
+	
+# If you run an Ubuntu GUI, Edit the following files too:
 sudo nano /etc/systemd/user.conf
 	#Change the following setting:
 	DefaultLimitNOFILE=1000000
