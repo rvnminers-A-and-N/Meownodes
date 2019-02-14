@@ -55,6 +55,8 @@ nano /proc/sys/net/core/somaxconn
 	#Change value to 511
 #Disable THP
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
+# Set overcommit_memory to 1
+sysctl vm.overcommit_memory=1
 #Start Redis Server
 redis-server /etc/redis/redis.conf
 ```
