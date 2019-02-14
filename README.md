@@ -15,6 +15,7 @@ Ravennodes is currently being developed to estimate the size of the Ravencoin ne
 ### Ubuntu 18.04, 16GB RAM Machine:
 #### Install redis 
 ```
+sudo apt update && sudo apt upgrade
 cd ~/
 sudo apt install redis
 ```
