@@ -15,7 +15,6 @@ Ravennodes is currently being developed to estimate the size of the Ravencoin ne
 ### Ubuntu 18.04, 16GB RAM Machine:
 #### Install redis 
 ```
-sudo apt update && sudo apt upgrade
 cd ~/
 sudo apt install redis
 ```
@@ -32,15 +31,13 @@ bash geoip/update.sh
 ```
 #### Update open file limits to prevent Ravennodes crashing on IO errors
 ```
-# Edit the following file:
+# Edit the following files:
 sudo nano /etc/security/limits.conf
 	#Add the following:
 	* soft nofile 1000000
 	* hard nofile 1000000
  	root soft nofile 1000000
 	root hard nofile 1000000
-	
-# If you run an Ubuntu GUI, Edit the following files too:
 sudo nano /etc/systemd/user.conf
 	#Change the following setting:
 	DefaultLimitNOFILE=1000000
@@ -57,13 +54,8 @@ nano /proc/sys/net/core/somaxconn
 	#Change value to 511
 #Disable THP
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
-# Set overcommit_memory to 1
-sysctl vm.overcommit_memory=1
 #Start Redis Server
 redis-server /etc/redis/redis.conf
-#Alternatively, run redis in the background with redis-server /etc/redis/redis.conf --daemonize yes
-
-#Make sure the file redis.sock is made in /tmp/
 ```
 #### To start the Ravennodes crawler
 Open a new console and start the crawler:
