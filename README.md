@@ -18,6 +18,9 @@ Ravennodes is currently being developed to estimate the size of the Ravencoin ne
 sudo apt update && sudo apt upgrade
 cd ~/
 sudo apt install redis
+
+# I prefer running redis manually
+# Optional, remove the service: sudo service redis-server disable
 ```
 #### Install Ravennodes and set up dependencies
 ```
