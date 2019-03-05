@@ -56,8 +56,7 @@ sudo nano /etc/systemd/system.conf
 #Login as admin
 sudo -i
 #Update /proc/sys/net/core/somaxconn
-nano /proc/sys/net/core/somaxconn
-	#Change value to 511
+sysctl -w net.core.somaxconn=511
 #Disable THP
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 # Set overcommit_memory to 1
