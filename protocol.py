@@ -154,7 +154,7 @@ from operator import itemgetter
 MAGIC_NUMBER = "\x52\x41\x56\x4E"
 PORT = 8767
 MIN_PROTOCOL_VERSION = 70015
-PROTOCOL_VERSION = 70018
+PROTOCOL_VERSION = 70026
 FROM_SERVICES = 0
 TO_SERVICES = 1  # NODE_NETWORK
 USER_AGENT = "/Ravennodes:0.1/"
@@ -956,7 +956,8 @@ class Connection(object):
 
 def main():
     # seed-raven.ravencoin.org
-    to_addr = ("34.214.193.125", PORT)
+    #to_addr = ("34.248.13.29", PORT)
+    to_addr = ("104.18.39.222", PORT)
     to_services = TO_SERVICES
 
     handshake_msgs = []

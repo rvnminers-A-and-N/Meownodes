@@ -33,6 +33,12 @@ pip install -r requirements.txt
 #Update GeoIP
 bash geoip/update.sh
 ```
+
+**NOTE:** For GeoIP, you now need an account at maxmind.com and acquire a license key. Add this key to `~/.bashrc`:
+```
+export MAXMIND_LICENSE_KEY=YOUR-KEY-HERE
+```
+
 #### Update open file limits to prevent Ravennodes crashing on IO errors
 ```
 # Edit the following file:

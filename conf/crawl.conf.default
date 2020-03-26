@@ -14,8 +14,9 @@ db = 0
 
 # List of DNS seeders to get a subset of reachable nodes
 seeders =
+#    91.134.145.4:9767	
     seed-raven.ravencoin.org
-    seed-raven.bitactivate.com
+#    seed-raven.bitactivate.com
 
 # Number of concurrent workers (greenlets)
 workers = 700
@@ -27,7 +28,7 @@ debug = False
 source_address = 0.0.0.0
 
 # Protocol version to use for outgoing version message
-protocol_version = 70019
+protocol_version = 70026
 
 # User agent (BIP 0014) to use for outgoing version message
 # -----------------------------------------------------------------------------
@@ -51,13 +52,13 @@ socket_timeout = 15
 cron_delay = 10
 
 # Take full network snapshot at most at every given interval
-snapshot_delay = 480
+snapshot_delay = 3600
 
 # Max. age for peering node to be included in crawl set
 max_age = 28800
 
 # Limit max. peers per node to be included in crawl set
-peers_per_node = 500
+peers_per_node = 1000
 
 # Attempt to establish connection with IPv6 nodes
 ipv6 = True
