@@ -1,18 +1,58 @@
-# Ravennodes
+# Ravennode
 This project is based on [Bitnodes](https://github.com/ayeowch/bitnodes).
 
-Ravennodes is currently being developed to estimate the size of the Ravencoin network by finding all the reachable nodes in the network. These are the nodes that accept incoming connections. Why you should run a full node is explained here on the [Bitcoin wiki](https://en.bitcoin.it/wiki/Full_node). The current methodology involves sending [`getaddr`](https://en.bitcoin.it/wiki/Satoshi_Client_Node_Discovery) messages recursively to find all the reachable nodes in the network, starting from a set of seed nodes. It is worth mentioning that this method of estimating network size [does not list all full nodes](https://en.bitcoin.it/wiki/Clearing_Up_Misconceptions_About_Full_Nodes) because not all nodes have an open port that can be probed using Ravennodes. These nodes are either behind firewalls or they are configured to not listen for connections. 
+Ravennodes is currently being developed to estimate the size of the Ravencoin network by finding all the reachable nodes in the network. These are the nodes that accept incoming connections. Why you should run a full node is explained here on the [Bitcoin wiki](https://en.bitcoin.it/wiki/Full_node). The current methodology involves sending [`getaddr`](https://en.bitcoin.it/wiki/Satoshi_Client_Node_Discovery) messages recursively to find all the reachable nodes in the network, starting from a set of seed nodes. It is worth mentioning that this method of estimating network size [does not list all full nodes](https://en.bitcoin.it/wiki/Clearing_Up_Misconceptions_About_Full_Nodes) because not all nodes have an open port that can be probed using Ravennodes. These nodes are either behind firewalls or they are configured to not listen for connections.
+
+The goal is to run the service as efficient as possible. The ravennodes crawler, web_updater, and website currently all run on an a1 medium AWS server (1 vCPu, 2GB RAM). 
+
+## TOC
+- [Ravennodes Crawler](#ravennodes-crawler)
+  * [Main Changes](#main-changes)
+  * [Dependencies](#dependencies)
+      - [Python Packages](#python-packages)
+  * [Steps on setting up a machine to run Ravennodes](#steps-on-setting-up-a-machine-to-run-ravennodes)
+    + [Ubuntu 18.04, 16GB RAM Machine:](#ubuntu-1804--16gb-ram-machine-)
+      - [Install redis](#install-redis)
+      - [Install Ravennodes and set up dependencies](#install-ravennodes-and-set-up-dependencies)
+      - [Update open file limits to prevent Ravennodes crashing on IO errors](#update-open-file-limits-to-prevent-ravennodes-crashing-on-io-errors)
+      - [Start redis service](#start-redis-service)
+      - [To start the Ravennodes crawler](#to-start-the-ravennodes-crawler)
+- [Ravennodes Web-updater](#ravennodes-web-updater)
+  * [Dependencies](#dependencies-1)
+      - [Python Packages](#python-packages-1)
+  * [To start the Ravennodes Web-updater](#to-start-the-ravennodes-web-updater)
+- [Ravennodes website](#ravennodes-website)
+  * [Dependencies](#dependencies-2)
+      - [Python Packages](#python-packages-2)
+  * [Website hosting](#website-hosting)
+- [Call for improvements](#call-for-improvements)
+
+# Ravennodes Crawler
 
 ## Main Changes
 - Changed parameters to support Ravencoin
 - Turned off Tor network support.
 
 ## Dependencies
-- Python 2.7
+- Python 2.7 virtual environment
 - [Redis](https://redislabs.com/)
 
+#### Python Packages ####
+| Package     | Version
+| ----------- | -------
+| dpkt        | 1.9.1 
+| flake8      | 3.5.0 
+| geoip2      | 2.9.0 
+| scipy       | 0.13.0 
+| gevent      | 1.3.4
+| ipaddress   | 1.0.22
+| PySocks     | 1.6.8
+| pytest      | 3.7.3
+| redis       | 2.10.6
+| requests    | 2.20.0
+
 ## Steps on setting up a machine to run Ravennodes 
-### Ubuntu 18.04, 16GB RAM Machine:
+### Ubuntu 18.04:
 #### Install redis 
 ```
 sudo apt update && sudo apt upgrade
@@ -24,16 +64,14 @@ sudo apt install redis
 ```
 #### Install Ravennodes and set up dependencies
 ```
-git clone https://github.com/jeroz1/Ravennodes.git
 #Move redis conf file
-sudo cp ~/Ravennodes/depends/redis/redis.conf /etc/redis/
+sudo cp [LOCATION]/crawler/depends/redis/redis.conf /etc/redis/
 #Install Python requirements
-cd ~/Ravennodes
+cd [LOCATION]/crawler
 pip install -r requirements.txt
 #Update GeoIP
 bash geoip/update.sh
 ```
-
 **NOTE:** For GeoIP, you now need an account at maxmind.com and acquire a license key. Add this key to `~/.bashrc`:
 ```
 export MAXMIND_LICENSE_KEY=YOUR-KEY-HERE
@@ -74,16 +112,64 @@ redis-server /etc/redis/redis.conf
 #Make sure the file redis.sock is made in /tmp/
 ```
 #### To start the Ravennodes crawler
-Open a new console and start the crawler:
+Open a new console, activate the python 2.7 virtual environment and start the crawler:
 ```
-cd ~/Ravennodes
+cd [LOCATION]/Ravennodes
 ./start.sh
 ```
 Data output will be available in `~/Ravennodes/data/export/5241564e`
 
 Process logs  will be available in `~/Ravennodes/log`
+
+# Ravennodes Web-updater
+- Data change watcher [adaptation from Michael Cho](https://www.michaelcho.me/article/using-pythons-watchdog-to-monitor-changes-to-a-directory) looking for crawler updates
+- Data updater generating ravencoin nodes tables and world maps for the website
+
+## Dependencies
+- Python 3.7 virtual environment
+
+### Python Packages
+| Package     | Version
+| ----------- | -------
+pandas        | 0.24.1
+watchdog      | 0.9.0
+numpy         | 1.16.1
+plotly        | 3.6.1
+
+## To start the Ravennodes Web-updater
+Open a new console, activate the python 3.7 virtual environment and start the updater:
+```
+cd [LOCATION]/web_updater
+./start.sh
+```
+
+# Ravennodes website
+- Website built using flask
+
+## Dependencies
+- Python 3.7 virtual environment
+
+### Python Packages
+| Package     | Version
+| ----------- | -------
+| Flask       | 1.0.2
+| gunicorn    | 19.9.0
+| Jinja2      | 2.10
+| pandas      | 0.24.1
+| Werkzeug    | 0.14.1
+
+## Website hosting
+[Website is hosted according to this guide](https://medium.com/ymedialabs-innovation/deploy-flask-app-with-nginx-using-gunicorn-and-supervisor-d7a93aa07c18)
+
+# Call for improvements
+Everyone is welcome to propose changes. Currently, the whole system is set up using python for self-educational purposes. 
+Using an SQL type database, for example, will drastically improve performance. 
+
 ___
 
 -Jeroz
+
+https://github.com/jeroz1/Ravennodes
+https://github.com/RavenCommunity/Ravennodes
 
 

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="nodes">
+    <center><h1>Node Count Over Time</h1></center>
+    {% include 'nodecount.html' %}
+            
+    <div <div class="wrapper">
+        <div class="box1">
+            <center><h1>Country Top 10</h1></center>
+            {{ tables[0]|safe }}
+        </div>
+        <div class="box2">
+            <center><h1>ISP Top 10</h1></center>
+            {{ tables[1]|safe }}
+        </div>
+        <div class="box3">
+            <center><h1>Version Use</h1></center>
+            {{ tables[2]|safe }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

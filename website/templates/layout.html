@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="description" content="Ravennodes: Ravencoin Node Summary Statistics">
+    <meta name="keywords" content="Ravencoin, Ravennodes, node, map, world">
+    <meta name="author" content="Jeroz">
+    <meta charset="UTF-8">
+
+    <title>Ravennodes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:300,400,500,600,700" rel="stylesheet">
+</head>
+
+<body>
+<div class="wrapper">
+    <header>
+        <div class="navbar">
+            <div class="navbar-container">
+        
+                <div class="navbar-logo">
+                    <h1>Ravennodes</h1>
+                </div>
+
+                <a href="{{ url_for('worldmap') }}">Interactive World Map</a>
+                <a href="{{ url_for('stats') }}">Live Stats</a>
+                <a href="{{ url_for('nodes') }}">Node List</a>
+                <a href="{{ url_for('home') }}">Home</a>
+
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>By Jeroz 2020</p>
+    </footer>
+
+</body>
+</html>
