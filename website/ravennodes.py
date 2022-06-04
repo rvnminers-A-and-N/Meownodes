@@ -26,7 +26,7 @@
 
 # Import Modules
 import pandas as pd
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 
 """
 Read generated tables
@@ -80,6 +80,39 @@ def worldmap():
     """
     return render_template('worldmap.html')
 
+# APIs incoming!
+# By RealBoktio, May 2022
+@ravennodes.route('/api/v0.1/stats/count')
+def api_node_count():
+    """
+    API: return current node count
+    """
+    count = {
+        "count": len(dfnodes),
+        "timestamp":last_update
+    }
+    return jsonify(count)
+
+@ravennodes.route('/api/v0.1/stats/country_top10')
+def api_country_top10():
+    """
+    API: return country Top10
+    """
+    return jsonify(dfcountry.to_dict(orient='records'))
+
+@ravennodes.route('/api/v0.1/stats/isp_top10')
+def api_isp_top10():
+    """
+    API: return ISP Top10
+    """
+    return jsonify(dfisp.to_dict(orient='records'))
+
+@ravennodes.route('/api/v0.1/stats/versions')
+def api_versions():
+    """
+    API: return node versions detected
+    """
+    return jsonify(dfversion.to_dict(orient='records'))
 
 if __name__ == '__main__':
     ravennodes.jinja_env.auto_reload = True
