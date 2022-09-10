@@ -30,6 +30,7 @@ Although using a database (e.g. SQL) might be better suited for this purpose, I 
 for self-educational purposes.
 """
 
+import re
 import glob
 import os.path
 import numpy as np
@@ -59,8 +60,11 @@ def read_json_file(path_to_file):
         # Remove outdated versions
         df = df[df[2] > CONF.ignore_version_min]
         df = df[df[2] < CONF.ignore_version_max]
-        # Filter Version numbers
-        df[3] = df[3].str[1:16]
+        
+        # Get version
+        version_string_split = [re.split('[()]', line) for line in df[3]]
+        df[3] = [version_string[0] for version_string in version_string_split]
+
         # Cast variables for memory efficiency
         df[1] = df[1].astype(np.int16)
         df[2] = df[2].astype(np.int32)
@@ -78,9 +82,14 @@ def read_json_file(path_to_file):
         df[14] = df[14].astype('category')
         df[15] = os.path.splitext(os.path.basename(path_to_file))[0]
         df[15] = df[15].astype(np.uint32)
+        
         # Rename columns
         df.columns = ['IP', 'Port', 'Codeversion', 'Version', 'Timefound', 'unknown', 'Block Height', 'rdns', 'City',
                       'Country ID', 'Latitude', 'Longitude', 'Locality', 'ASnumber', 'ISP', 'Crawl']
+
+        # Add user agent comment
+        df['uacomment'] = [version_string[1] if len(version_string) > 1 else '' for version_string in version_string_split]
+
         return df
 
 
@@ -170,7 +179,7 @@ def parse_data(json_folder, output_folder, json_data, new_file, init):
         dfcount.to_csv(os.path.join(output_folder, CONF.tables_export_folder, 'node_count.csv'), index=False, sep=',')
 
         # Build table for presentation
-        df = dfcurrent[['IP', 'Port', 'Version', 'Block Height', 'City', 'Country ID', 'Latitude', 'Longitude',
+        df = dfcurrent[['IP', 'Port', 'Version','uacomment', 'Block Height', 'City', 'Country ID', 'Latitude', 'Longitude',
                         'ISP', 'Country Name']]
         df = df.merge(dfcurrent_info[['IP', 'Port', 'Age', 'Reachability']], how='inner', left_on=['IP', 'Port'],
                       right_on=['IP', 'Port'])
@@ -195,7 +204,7 @@ def parse_data(json_folder, output_folder, json_data, new_file, init):
         version_freq.to_csv(os.path.join(output_folder, CONF.tables_export_folder, 'version_frequency.csv'),
                             index=False, sep=',')
 
-        # ISP Freg table
+        # ISP Freq table
         isp_freq = pd.value_counts(dfcurrent['ISP']).to_frame().reset_index()
         isp_freq.columns = ['ISP', 'Count']
         isp_freq['%'] = round(isp_freq.Count / len(df) * 100, 2)
