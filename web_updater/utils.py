@@ -63,7 +63,7 @@ def read_json_file(path_to_file):
         
         # Get version
         version_string_split = [re.split('[()]', line) for line in df[3]]
-        df[3] = [version_string[0] for version_string in version_string_split]
+        df[3] = [version_string[0].replace("/", "") for version_string in version_string_split]
 
         # Cast variables for memory efficiency
         df[1] = df[1].astype(np.int16)
