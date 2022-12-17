@@ -1,1 +1,1 @@
-web: gunicorn ravennodes:ravennodes
+web: gunicorn meownodes:meownodes

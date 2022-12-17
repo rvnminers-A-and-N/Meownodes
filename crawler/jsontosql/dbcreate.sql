@@ -1,11 +1,11 @@
-CREATE DATABASE ravenstatus;
-USE ravenstatus;
+CREATE DATABASE meowcoinstatus;
+USE meowcoinstatus;
 CREATE TABLE `nodes` (
   `id` int(12) NOT NULL AUTO_INCREMENT,
   `ip` varchar(32) NOT NULL,
   `port` int(7) NOT NULL,
   `codeversion` int(12) NOT NULL,
-  `ravenrelease` varchar(48) NOT NULL,
+  `meowcoinrelease` varchar(48) NOT NULL,
   `timefound` int(48) NOT NULL,
   `unknown` int(12) NOT NULL,
   `block` int(20) NOT NULL,

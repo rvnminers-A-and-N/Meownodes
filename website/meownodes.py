@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# ravennodes.py - Ravennodes website
+# meownodes.py - Meownodes website
 #
 # By Jeroz Feb, 2019
 #
@@ -39,10 +39,10 @@ dfversion = pd.read_csv("tables/version_frequency.csv")
 dfcount = pd.read_csv("tables/node_count.csv")
 last_update = dfcount['Date'].astype('str').iloc[-1] + ' GMT'
 
-# Build Ravennodes website
-ravennodes = Flask(__name__)
+# Build Meownodes website
+meownodes = Flask(__name__)
 
-@ravennodes.route('/')
+@meownodes.route('/')
 def home():
     """
     Home Page
@@ -52,7 +52,7 @@ def home():
                            tables=[dfcountry.to_html(classes='table',index=False)])
 
 # Build 24h Stats page
-@ravennodes.route('/stats/')
+@meownodes.route('/stats/')
 def stats():
     """
     Nodes Page
@@ -64,7 +64,7 @@ def stats():
 
 
 # Build Nodes page
-@ravennodes.route('/nodes/')
+@meownodes.route('/nodes/')
 def nodes():
     """
     Nodes Page
@@ -73,7 +73,7 @@ def nodes():
 
 
 # Build Worldmap page
-@ravennodes.route('/worldmap/')
+@meownodes.route('/worldmap/')
 def worldmap():
     """
     World Map page
@@ -82,7 +82,7 @@ def worldmap():
 
 # APIs incoming!
 # By RealBoktio, May 2022
-@ravennodes.route('/api/v0.1/stats/count')
+@meownodes.route('/api/v0.1/stats/count')
 def api_node_count():
     """
     API: return current node count
@@ -93,21 +93,21 @@ def api_node_count():
     }
     return jsonify(count)
 
-@ravennodes.route('/api/v0.1/stats/country_top10')
+@meownodes.route('/api/v0.1/stats/country_top10')
 def api_country_top10():
     """
     API: return country Top10
     """
     return jsonify(dfcountry.to_dict(orient='records'))
 
-@ravennodes.route('/api/v0.1/stats/isp_top10')
+@meownodes.route('/api/v0.1/stats/isp_top10')
 def api_isp_top10():
     """
     API: return ISP Top10
     """
     return jsonify(dfisp.to_dict(orient='records'))
 
-@ravennodes.route('/api/v0.1/stats/versions')
+@meownodes.route('/api/v0.1/stats/versions')
 def api_versions():
     """
     API: return node versions detected
@@ -115,9 +115,9 @@ def api_versions():
     return jsonify(dfversion.to_dict(orient='records'))
 
 if __name__ == '__main__':
-    ravennodes.jinja_env.auto_reload = True
-    ravennodes.config['TEMPLATES_AUTO_RELOAD'] = True
-    ravennodes.run(debug=False)
+    meownodes.jinja_env.auto_reload = True
+    meownodes.config['TEMPLATES_AUTO_RELOAD'] = True
+    meownodes.run(debug=False)
 
 
 

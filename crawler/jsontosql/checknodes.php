@@ -1,6 +1,6 @@
 <?php
 // Script: Json to Sql Parser 
-// written by push, ravenland.org.
+// written by push, meowcoinland.org.
 // Date: 12/02/2019
 
 if (defined('STDIN')) {
@@ -26,9 +26,9 @@ $assetfile = file_get_contents("$file");
 $nodefiledecode = json_decode($assetfile);
 
 $servername = "localhost";
-$username = "ravenstatus";
+$username = "meowcoinstatus";
 $password = "yoursecuremysqlpasswordgoeshere";
-$dbname = "ravenstatus";
+$dbname = "meowcoinstatus";
 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -46,7 +46,7 @@ $ip = $node[0];
 $_ip = mysql_escape_mimic($ip);
 $port = $node[1];
 $codeversion = $node[2];
-$ravenrelease = $node[3];
+$meowcoinrelease = $node[3];
 $timefound = $node[4];
 $unknown = $node[5];
 $block = $node[6];
@@ -68,11 +68,11 @@ $isp = $node[14];
 $_isp = mysql_escape_mimic($isp);
 
 
-echo "$_ip $port $codeversion $ravenrelease $timefound $block $rdns $city $countrycode $latitude $longitude $locality $as $isp\n";
+echo "$_ip $port $codeversion $meowcoinrelease $timefound $block $rdns $city $countrycode $latitude $longitude $locality $as $isp\n";
 $n++;
 
-$sql = "INSERT INTO nodes (ip, port, codeversion, ravenrelease, timefound, unknown, block, rdns, city, countrycode, latitude, longitude, locality, ASnumber, ISP)
-VALUES ('$ip', '$port', '$codeversion', '$ravenrelease', '$timefound', '$unknown', '$block', '$rdns', '$city', '$countrycode', '$latitude', '$longitude', '$_locality', '$_as', '$_isp' )";
+$sql = "INSERT INTO nodes (ip, port, codeversion, meowcoinrelease, timefound, unknown, block, rdns, city, countrycode, latitude, longitude, locality, ASnumber, ISP)
+VALUES ('$ip', '$port', '$codeversion', '$meowcoinrelease', '$timefound', '$unknown', '$block', '$rdns', '$city', '$countrycode', '$latitude', '$longitude', '$_locality', '$_as', '$_isp' )";
 
 if ($conn->query($sql) === TRUE) {
 	$last_id = $conn->insert_id;

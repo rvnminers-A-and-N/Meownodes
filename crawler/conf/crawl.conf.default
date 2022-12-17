@@ -1,22 +1,22 @@
 [crawl]
 
 # Logfile
-logfile = log/crawl.5241564e.log
+logfile = log/crawl.4d455743.log
 
 # Network magic number
-magic_number = 5241564e
+magic_number = 4d455743
 
 # Default/fallback port number
-port = 8767
+port = 8788
 
 # Redis database number
 db = 0
 
 # List of DNS seeders to get a subset of reachable nodes
-seeders =
-#    91.134.145.4:9767	
-    seed-raven.ravencoin.org
-#    seed-raven.bitactivate.com
+seeders =	
+    66.42.117.31
+    167.179.94.220
+#    seed-meowcoin.bitactivate.com
 
 # Number of concurrent workers (greenlets)
 workers = 700
@@ -25,10 +25,10 @@ workers = 700
 debug = False
 
 # Public IP address for network interface
-source_address = 0.0.0.0
+source_address = 149.28.197.19
 
 # Protocol version to use for outgoing version message
-protocol_version = 70026
+protocol_version = 70028
 
 # User agent (BIP 0014) to use for outgoing version message
 # -----------------------------------------------------------------------------
@@ -37,7 +37,7 @@ protocol_version = 70026
 # crawler. This is so that users will not confuse your crawler with another
 # instance that is already running and generating data for the project.
 # -----------------------------------------------------------------------------
-user_agent = /Ravennodes:0.1/
+user_agent = /Meownodes:0.1/
 
 # Services to use for outgoing network address message
 services = 0
@@ -137,4 +137,4 @@ onion_nodes =
 include_checked = False
 
 # Relative path to directory containing timestamp-prefixed JSON crawl files
-crawl_dir = data/crawl/5241564e
+crawl_dir = data/crawl/4d455743
