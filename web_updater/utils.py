@@ -43,7 +43,7 @@ pd.options.mode.chained_assignment = None
 
 class CONF:
     # Filter out PGN nodes
-    ignore_version_min = 70015
+    ignore_version_min = 70028
     ignore_version_max = 70035
     tables_export_folder = 'tables'
     html_export_folder = 'templates'
@@ -158,7 +158,7 @@ def parse_data(json_folder, output_folder, json_data, new_file, init):
         dfcurrent_info['Reachability'] = round(dfcurrent_info['freq'] / dfcurrent_info['freq_max'] * 100, 2)
 
         # New today are:
-        dfcurrent_info['24hNew'] = 'rgb(246, 147, 51)'
+        dfcurrent_info['24hNew'] = 'rgb(244, 203, 174)'
         #for i in range(len(dfcurrent)):
         #    if dfcurrent_info['AgeSec'][i] < 86400:
         #        dfcurrent_info['24hNew'][i] = 'rgb(246, 51, 223)'
@@ -251,15 +251,15 @@ def parse_data(json_folder, output_folder, json_data, new_file, init):
         # Add Crawler location
         node_version = dict(
             type='scattergeo',
-            lon=[-77.4875],
-            lat=[39.0437],
-            text='39.0437, -77.4875 <BR> Meownodes',
+            lon=[-87.9903],
+            lat=[42.0062],
+            text='42.0062, -87.9903 <BR> Meownodes',
             hoverinfo='text',
             mode='markers',
             marker=dict(
                 size=15,
                 opacity=1,
-                color='rgb(57, 65, 130)',
+                color='rgb(189, 133, 7)',
 
             ),
             name='Meownodes'
@@ -271,7 +271,7 @@ def parse_data(json_folder, output_folder, json_data, new_file, init):
             showframe=False,
             showcoastlines=True,
             showcountries=False,
-            coastlinecolor='rgb(57, 65, 130)')
+            coastlinecolor='rgb(189, 133, 7)')
         theme2 = dict(
             showframe=False,
             showcoastlines=False,
@@ -309,12 +309,12 @@ def parse_data(json_folder, output_folder, json_data, new_file, init):
                 buttons=list([
                     dict(
                         args=['geo', theme1],
-                        label='RVN-Continents',
+                        label='MEWC-Continents',
                         method='relayout'
                     ),
                     dict(
                         args=['geo', theme2],
-                        label='RVN-Countries',
+                        label='MEWC-Countries',
                         method='relayout'
                     ),
                 ]),
@@ -354,7 +354,7 @@ def parse_data(json_folder, output_folder, json_data, new_file, init):
                            text='Date: ' + dfcount['Date'].astype('str') + '<BR>' +
                                 'Node Count: ' + dfcount['Node Count'].astype('str'),
                            hoverinfo='text',
-                           marker=dict(color='rgb(246, 147, 51)'),
+                           marker=dict(color='rgb(216, 196, 126)'),
                            showlegend=False)]
 
         layout = dict(
