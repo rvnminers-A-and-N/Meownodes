@@ -1,6 +1,6 @@
 <?php
 // Script: Json to Sql Parser 
-// written by push, meowcoinland.org.
+// written by push, ravenland.org.
 // Date: 12/02/2019
 
 if (defined('STDIN')) {
