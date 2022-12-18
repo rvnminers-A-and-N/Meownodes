@@ -33,7 +33,7 @@ Reference: https://en.bitcoin.it/wiki/Protocol_specification
                            protocol version >= 70001
 -------------------------------------------------------------------------------
 [---MESSAGE---]
-[ 4] MAGIC_NUMBER               (\x52\x41\x56\x4E)                  uint32_t
+[ 4] MAGIC_NUMBER               (\x4D\x45\x57\x43)                  uint32_t
 [12] COMMAND                                                        char[12]
 [ 4] LENGTH                     <I (len(payload))                   uint32_t
 [ 4] CHECKSUM                   (sha256(sha256(payload))[:4])       uint32_t
@@ -151,10 +151,10 @@ from cStringIO import StringIO
 from io import SEEK_CUR
 from operator import itemgetter
 
-MAGIC_NUMBER = "\x52\x41\x56\x4E"
-PORT = 8767
+MAGIC_NUMBER = "\x4D\x45\x57\x43"
+PORT = 8788
 MIN_PROTOCOL_VERSION = 70015
-PROTOCOL_VERSION = 70026
+PROTOCOL_VERSION = 70028
 FROM_SERVICES = 0
 TO_SERVICES = 1  # NODE_NETWORK
 USER_AGENT = "/Meownodes:0.1/"
@@ -957,7 +957,7 @@ class Connection(object):
 def main():
     # seed-meowcoin.meowcoin.org
     #to_addr = ("34.248.13.29", PORT)
-    to_addr = ("104.18.39.222", PORT)
+    to_addr = ("66.42.117.31", PORT)
     to_services = TO_SERVICES
 
     handshake_msgs = []
