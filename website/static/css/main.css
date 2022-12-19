@@ -9,7 +9,7 @@ header {
     z-index: 1;
     height: 45px;
     overflow: hidden;
-    background-color: #F69333;
+    background-color: #D8C47E;
     position: fixed;
     top: 0;
     left: 0;
@@ -19,7 +19,7 @@ header {
 footer {
     height: 45px;
     overflow: hidden;
-    background-color: #394182;
+    background-color: #606060;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -91,8 +91,8 @@ main {
 }
 
 .navbar a:hover {
-  background: #f2b57b;
-  color: #394182;
+  background: #ebdfb3;
+  color: #606060;
 }
 
 .navbar a, .navbar a:visited, .navbar a:active {
@@ -214,7 +214,7 @@ p {
 }
 
 .table th {
-    background-color: #394182;
+    background-color: #606060;
     color: white;
     text-align: left;
     border: none;
@@ -230,7 +230,7 @@ p {
 }
 
 .table tr:hover {
-    background: #F69333;
+    background: #ddcc90;
     cursor: pointer;
 }
 
@@ -238,12 +238,12 @@ p {
 .myButton1 {
     float: right;
     margin-right: 10px;
-    background-color: #F69333;
+    background-color: #D8C47E;
     text-transform: uppercase;
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
     border-radius: 25px;
-    border: 1px solid red;
+    border: 1px solid #d8b94a;
     display: inline-block;
     cursor: pointer;
     color: #ffffff;
@@ -258,12 +258,12 @@ p {
 .myButton2 {
     float: right;
     margin-right: 10px;
-    background-color: #F69333;
+    background-color: #F4CBAE;
     text-transform: uppercase;
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
     border-radius: 25px;
-    border: 1px solid red;
+    border: 1px solid #f4ab73;
     display: inline-block;
     cursor: pointer;
     color: #ffffff;
@@ -278,12 +278,12 @@ p {
 .myButton3 {
     float: right;
     margin-right: 100px;
-    background-color: #F69333;
+    background-color: #BD8507;
     text-transform: uppercase;
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
     border-radius: 25px;
-    border: 1px solid red;
+    border: 1px solid #af7b02;
     display: inline-block;
     cursor: pointer;
     color: #ffffff;
@@ -295,12 +295,29 @@ p {
     text-decoration: none;
 }
 
-.myButton:hover {
-    background-color: #ffb36b;
+.myButton1:hover {
+    background-color: #ddcc90;
 }
 
-.myButton:active {
+.myButton2:hover {
+    background-color: #f4dac1;
+}
+
+.myButton3:hover {
+    background-color: #bd9947;
+}
+
+.myButton1:active {
     position: relative;
     top: 1px;
 }
 
+.myButton2:active {
+    position: relative;
+    top: 1px;
+}
+
+.myButton3:active {
+    position: relative;
+    top: 1px;
+}
