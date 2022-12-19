@@ -251,9 +251,9 @@ def parse_data(json_folder, output_folder, json_data, new_file, init):
         # Add Crawler location
         node_version = dict(
             type='scattergeo',
-            lon=[-87.9903],
-            lat=[42.0062],
-            text='42.0062, -87.9903 <BR> Meownodes',
+            lon=[-121.9433],
+            lat=[37.3831],
+            text='37.3831, -121.9433 <BR> Meownodes',
             hoverinfo='text',
             mode='markers',
             marker=dict(
@@ -282,14 +282,16 @@ def parse_data(json_folder, output_folder, json_data, new_file, init):
             coastlinecolor='rgb(57, 65, 130)')
         theme3 = dict(
             showframe=False,
-            showcoastlines=False,
+            showcoastlines=True,
             showcountries=True,
             showland=True,
-            landcolor='rgb(68, 68, 68)',
-            countrycolor='rgb(153, 153, 153)',
+            landcolor='rgb(51, 153, 0)',
+            countrycolor='rgb(51, 153, 0)',
+            coastlinecolor='rgb(25, 76, 0)',
             showocean=True,
-            oceancolor='rgb(0, 0, 0)',
-            paper_bgcolor='rgb(0,0,0)')
+            oceancolor='rgb(0, 105, 148)',
+            paper_bgcolor='rgb(255,255,255)'
+        )
 
         # Build layouts
         layout1 = dict(
@@ -317,6 +319,11 @@ def parse_data(json_folder, output_folder, json_data, new_file, init):
                         label='MEWC-Countries',
                         method='relayout'
                     ),
+                    dict(
+                        args=['geo', theme3],
+                        label='MEWC-Pretty-Countries',
+                        method='relayout'
+                    )
                 ]),
                 direction='down',
                 pad={'r': 10, 't': 10},
