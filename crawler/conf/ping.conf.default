@@ -1,10 +1,10 @@
 [ping]
 
 # Logfile
-logfile = log/ping.4d455743.log
+logfile = log/ping.41493445.log
 
 # Network magic number
-magic_number = 4d455743
+magic_number = 41493445
 
 # Redis database number
 db = 0
@@ -16,7 +16,7 @@ workers = 2000
 debug = False
 
 # Public IP address for network interface
-source_address = 149.28.197.19
+source_address = 0.0.0.0
 
 # Protocol version to use for outgoing version message
 protocol_version = 70028
@@ -56,4 +56,4 @@ onion = False
 tor_proxy = 127.0.0.1:9050
 
 # Relative path to directory containing timestamp-prefixed JSON crawl files
-crawl_dir = data/crawl/4d455743
+crawl_dir = data/crawl/41493445

@@ -33,7 +33,7 @@ Reference: https://en.bitcoin.it/wiki/Protocol_specification
                            protocol version >= 70001
 -------------------------------------------------------------------------------
 [---MESSAGE---]
-[ 4] MAGIC_NUMBER               (\x4D\x45\x57\x43)                  uint32_t
+[ 4] MAGIC_NUMBER               (\x41\x49\x34\x45)                  uint32_t
 [12] COMMAND                                                        char[12]
 [ 4] LENGTH                     <I (len(payload))                   uint32_t
 [ 4] CHECKSUM                   (sha256(sha256(payload))[:4])       uint32_t
@@ -151,8 +151,8 @@ from cStringIO import StringIO
 from io import SEEK_CUR
 from operator import itemgetter
 
-MAGIC_NUMBER = "\x4D\x45\x57\x43"
-PORT = 8788
+MAGIC_NUMBER = "\x41\x49\x34\x45"
+PORT = 8865
 MIN_PROTOCOL_VERSION = 70015
 PROTOCOL_VERSION = 70028
 FROM_SERVICES = 0
@@ -957,7 +957,8 @@ class Connection(object):
 def main():
     # seed-AIPowerGrid.AIPowerGrid.org
     #to_addr = ("34.248.13.29", PORT)
-    to_addr = ("66.42.117.31", PORT)
+    #to_addr = ("66.42.117.31", PORT)
+    to_addr = ("0.0.0.0", PORT)
     to_services = TO_SERVICES
 
     handshake_msgs = []

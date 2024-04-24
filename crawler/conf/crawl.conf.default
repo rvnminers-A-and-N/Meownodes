@@ -1,21 +1,27 @@
 [crawl]
 
 # Logfile
-logfile = log/crawl.4d455743.log
+logfile = log/crawl.41493445.log
 
 # Network magic number
-magic_number = 4d455743
+magic_number = 41493445
 
 # Default/fallback port number
-port = 8788
+port = 8865
 
 # Redis database number
 db = 0
 
 # List of DNS seeders to get a subset of reachable nodes
 seeders =	
-    66.42.117.31
-    167.179.94.220
+    dnsseed.aipowergrid.io
+    us-seed1.aipowergrid.io
+    us-seed2.aipowergrid.io
+    us-seed3.aipowergrid.io
+    jp-seed1.aipowergrid.io
+    au-seed1.aipowergrid.io
+    eu-seed1.aipowergrid.io
+    in-seed1.aipowergrid.io
 #    seed-AIPowerGrid.bitactivate.com
 
 # Number of concurrent workers (greenlets)
@@ -25,7 +31,7 @@ workers = 700
 debug = False
 
 # Public IP address for network interface
-source_address = 149.28.197.19
+source_address = 0.0.0.0
 
 # Protocol version to use for outgoing version message
 protocol_version = 70028
@@ -137,4 +143,4 @@ onion_nodes =
 include_checked = False
 
 # Relative path to directory containing timestamp-prefixed JSON crawl files
-crawl_dir = data/crawl/4d455743
+crawl_dir = data/crawl/41493445

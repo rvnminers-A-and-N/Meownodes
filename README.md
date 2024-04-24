@@ -117,7 +117,7 @@ Open a new console, activate the python 2.7 virtual environment and start the cr
 cd [LOCATION]/AIPGnodes
 ./start.sh
 ```
-Data output will be available in `~/AIPGnodes/data/export/4d455743`
+Data output will be available in `~/AIPGnodes/data/export/41493445`
 
 Process logs  will be available in `~/AIPGnodes/log`
 
