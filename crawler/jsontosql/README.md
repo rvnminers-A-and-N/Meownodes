@@ -1,4 +1,4 @@
-# MEOWCOINODES DATABASE SCHEMA SETUP
+# AIPowerGridODES DATABASE SCHEMA SETUP
 # written by push
 
 *To create the Database use dbcreate.sql like:*
@@ -11,15 +11,15 @@ mysql -u root
 ```
 *and type the following commands:*
 
-```CREATE DATABASE meowcoinstatus
-CREATE DATABASE meowcoinstatus;
-USE meowcoinstatus;
+```CREATE DATABASE AIPowerGridstatus
+CREATE DATABASE AIPowerGridstatus;
+USE AIPowerGridstatus;
 CREATE TABLE `nodes` (
   `id` int(12) NOT NULL AUTO_INCREMENT,
   `ip` varchar(32) NOT NULL,
   `port` int(7) NOT NULL,
   `codeversion` int(12) NOT NULL,
-  `meowcoinrelease` varchar(48) NOT NULL,
+  `AIPowerGridrelease` varchar(48) NOT NULL,
   `timefound` int(48) NOT NULL,
   `unknown` int(12) NOT NULL,
   `block` int(20) NOT NULL,
@@ -53,7 +53,7 @@ It is possible to create a script to call checknodes.php from PHP-CLI and insert
 ```#!/bin/bash
 # Author: push
 # Date: 08/01/2019
-# Create SQL Database of Meowcoin Nodes Export Data
+# Create SQL Database of AIPowerGrid Nodes Export Data
 
 jsonfile=json/1549425135.json
 
@@ -69,25 +69,25 @@ php checknodes.php some/path/to/your/file.json
 Querying the Database Fields
 
 ```mysql
-MariaDB [meowcoinstatus]> select * from nodes;
+MariaDB [AIPowerGridstatus]> select * from nodes;
 ```
 
 Querying All Database Fields from a Specific Region
 
 ```mysql
-MariaDB [meowcoinstatus]> select * from nodes where locality LIKE '%Europe%';
+MariaDB [AIPowerGridstatus]> select * from nodes where locality LIKE '%Europe%';
 ```
 
 Querying All Database Fields from a Specific City
 
 ```mysql
-MariaDB [meowcoinstatus]> select * from nodes where city = 'London';
+MariaDB [AIPowerGridstatus]> select * from nodes where city = 'London';
 ```
 
 Querying Nodes from a specific Unix Date Range
 
 ```mysql
-MariaDB [meowcoinstatus]> select * from nodes where timefound LIKE '15494095%'
+MariaDB [AIPowerGridstatus]> select * from nodes where timefound LIKE '15494095%'
 ```
 
 # DEPENDENCIES
@@ -116,9 +116,9 @@ sudo apt install php7.2-cli hhvm php5-mysqlnd
 
 ```php
 $servername = "localhost";
-$username = "meowcoinstatus";
+$username = "AIPowerGridstatus";
 $password = "somesecurepasswordhere";
-$dbname = "meowcoinstatus";
+$dbname = "AIPowerGridstatus";
 ```
 
 In the file checknodes.php you will need to configure the MYSQL  user so the script has permission to access the records. Create a MYSQL user like below, and create the DB SCHEMA by copying the below. Or using the provided database.sql file.
@@ -126,19 +126,19 @@ In the file checknodes.php you will need to configure the MYSQL  user so the scr
 **Permissions:**
 
 ```mysql
-MariaDB [(none)]> GRANT ALL PRIVILEGES ON meowcoinstatus.* to meowcoinstatus@localhost identified by 'changethiswithasecurepassword' ;                                                                                                     
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON AIPowerGridstatus.* to AIPowerGridstatus@localhost identified by 'changethiswithasecurepassword' ;                                                                                                     
 ```
 
 **Create Database & Schema**
 
 ```mysql
-MariaDB [(none)]> create database meowcoinstatus;
+MariaDB [(none)]> create database AIPowerGridstatus;
 MariaDB [(none)]> CREATE TABLE `nodes` (
   `id` int(12) NOT NULL AUTO_INCREMENT,
   `ip` varchar(32) NOT NULL,
   `port` int(7) NOT NULL,
   `codeversion` int(12) NOT NULL,
-  `meowcoinrelease` varchar(48) NOT NULL,
+  `AIPowerGridrelease` varchar(48) NOT NULL,
   `timefound` int(48) NOT NULL,
   `unknown` int(12) NOT NULL,
   `block` int(20) NOT NULL,
@@ -158,7 +158,7 @@ MariaDB [(none)]> CREATE TABLE `nodes` (
 
 Once this has been done ensure that checknodes.php file has the credentials correctly set. 
 
-Then test with the provided test data set that the importer is working correctly. You may replace json/1549425135.json with any output from Meowcoinodes in JSON format.
+Then test with the provided test data set that the importer is working correctly. You may replace json/1549425135.json with any output from AIPowerGridodes in JSON format.
 
 ``` php 
 php checknodes.php json/1549425135.json

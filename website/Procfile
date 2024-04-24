@@ -1,1 +1,1 @@
-web: gunicorn meownodes:meownodes
+web: gunicorn AIPGnodes:AIPGnodes

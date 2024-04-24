@@ -1,36 +1,36 @@
-# Meownodes
+# AIPGnodes
 This project is based on [Bitnodes](https://github.com/ayeowch/bitnodes).
 
-Meownodes is currently being developed to estimate the size of the Meowcoin network by finding all the reachable nodes in the network. These are the nodes that accept incoming connections. Why you should run a full node is explained here on the [Bitcoin wiki](https://en.bitcoin.it/wiki/Full_node). The current methodology involves sending [`getaddr`](https://en.bitcoin.it/wiki/Satoshi_Client_Node_Discovery) messages recursively to find all the reachable nodes in the network, starting from a set of seed nodes. It is worth mentioning that this method of estimating network size [does not list all full nodes](https://en.bitcoin.it/wiki/Clearing_Up_Misconceptions_About_Full_Nodes) because not all nodes have an open port that can be probed using Meownodes. These nodes are either behind firewalls or they are configured to not listen for connections.
+AIPGnodes is currently being developed to estimate the size of the AIPowerGrid network by finding all the reachable nodes in the network. These are the nodes that accept incoming connections. Why you should run a full node is explained here on the [Bitcoin wiki](https://en.bitcoin.it/wiki/Full_node). The current methodology involves sending [`getaddr`](https://en.bitcoin.it/wiki/Satoshi_Client_Node_Discovery) messages recursively to find all the reachable nodes in the network, starting from a set of seed nodes. It is worth mentioning that this method of estimating network size [does not list all full nodes](https://en.bitcoin.it/wiki/Clearing_Up_Misconceptions_About_Full_Nodes) because not all nodes have an open port that can be probed using AIPGnodes. These nodes are either behind firewalls or they are configured to not listen for connections.
 
-The goal is to run the service as efficient as possible. The meownodes crawler, web_updater, and website currently all run on an a1 medium AWS server (1 vCPu, 2GB RAM). 
+The goal is to run the service as efficient as possible. The AIPGnodes crawler, web_updater, and website currently all run on an a1 medium AWS server (1 vCPu, 2GB RAM). 
 
 ## TOC
-- [Meownodes Crawler](#meownodes-crawler)
+- [AIPGnodes Crawler](#AIPGnodes-crawler)
   * [Main Changes](#main-changes)
   * [Dependencies](#dependencies)
       - [Python Packages](#python-packages)
-  * [Steps on setting up a machine to run Meownodes](#steps-on-setting-up-a-machine-to-run-meownodes)
+  * [Steps on setting up a machine to run AIPGnodes](#steps-on-setting-up-a-machine-to-run-AIPGnodes)
     + [Ubuntu 18.04, 16GB RAM Machine:](#ubuntu-1804--16gb-ram-machine-)
       - [Install redis](#install-redis)
-      - [Install Meownodes and set up dependencies](#install-meownodes-and-set-up-dependencies)
-      - [Update open file limits to prevent Meownodes crashing on IO errors](#update-open-file-limits-to-prevent-meownodes-crashing-on-io-errors)
+      - [Install AIPGnodes and set up dependencies](#install-AIPGnodes-and-set-up-dependencies)
+      - [Update open file limits to prevent AIPGnodes crashing on IO errors](#update-open-file-limits-to-prevent-AIPGnodes-crashing-on-io-errors)
       - [Start redis service](#start-redis-service)
-      - [To start the Meownodes crawler](#to-start-the-meownodes-crawler)
-- [Meownodes Web-updater](#meownodes-web-updater)
+      - [To start the AIPGnodes crawler](#to-start-the-AIPGnodes-crawler)
+- [AIPGnodes Web-updater](#AIPGnodes-web-updater)
   * [Dependencies](#dependencies-1)
       - [Python Packages](#python-packages-1)
-  * [To start the Meownodes Web-updater](#to-start-the-meownodes-web-updater)
-- [Meownodes website](#meownodes-website)
+  * [To start the AIPGnodes Web-updater](#to-start-the-AIPGnodes-web-updater)
+- [AIPGnodes website](#AIPGnodes-website)
   * [Dependencies](#dependencies-2)
       - [Python Packages](#python-packages-2)
   * [Website hosting](#website-hosting)
 - [Call for improvements](#call-for-improvements)
 
-# Meownodes Crawler
+# AIPGnodes Crawler
 
 ## Main Changes
-- Changed parameters to support Meowcoin
+- Changed parameters to support AIPowerGrid
 - Turned off Tor network support.
 
 ## Dependencies
@@ -51,7 +51,7 @@ The goal is to run the service as efficient as possible. The meownodes crawler, 
 | redis       | 2.10.6
 | requests    | 2.20.0
 
-## Steps on setting up a machine to run Meownodes 
+## Steps on setting up a machine to run AIPGnodes 
 ### Ubuntu 18.04:
 #### Install redis 
 ```
@@ -62,7 +62,7 @@ sudo apt install redis
 # I prefer running redis manually
 # Optional, remove the service: sudo service redis-server disable
 ```
-#### Install Meownodes and set up dependencies
+#### Install AIPGnodes and set up dependencies
 ```
 #Move redis conf file
 sudo cp [LOCATION]/crawler/depends/redis/redis.conf /etc/redis/
@@ -77,7 +77,7 @@ bash geoip/update.sh
 export MAXMIND_LICENSE_KEY=YOUR-KEY-HERE
 ```
 
-#### Update open file limits to prevent Meownodes crashing on IO errors
+#### Update open file limits to prevent AIPGnodes crashing on IO errors
 ```
 # Edit the following file:
 sudo nano /etc/security/limits.conf
@@ -111,19 +111,19 @@ redis-server /etc/redis/redis.conf
 
 #Make sure the file redis.sock is made in /tmp/
 ```
-#### To start the Meownodes crawler
+#### To start the AIPGnodes crawler
 Open a new console, activate the python 2.7 virtual environment and start the crawler:
 ```
-cd [LOCATION]/Meownodes
+cd [LOCATION]/AIPGnodes
 ./start.sh
 ```
-Data output will be available in `~/Meownodes/data/export/4d455743`
+Data output will be available in `~/AIPGnodes/data/export/4d455743`
 
-Process logs  will be available in `~/Meownodes/log`
+Process logs  will be available in `~/AIPGnodes/log`
 
-# Meownodes Web-updater
+# AIPGnodes Web-updater
 - Data change watcher [adaptation from Michael Cho](https://www.michaelcho.me/article/using-pythons-watchdog-to-monitor-changes-to-a-directory) looking for crawler updates
-- Data updater generating meowcoin nodes tables and world maps for the website
+- Data updater generating AIPowerGrid nodes tables and world maps for the website
 
 ## Dependencies
 - Python 3.7 virtual environment
@@ -136,14 +136,14 @@ watchdog      | 0.9.0
 numpy         | 1.16.1
 plotly        | 3.6.1
 
-## To start the Meownodes Web-updater
+## To start the AIPGnodes Web-updater
 Open a new console, activate the python 3.7 virtual environment and start the updater:
 ```
 cd [LOCATION]/web_updater
 ./start.sh
 ```
 
-# Meownodes website
+# AIPGnodes website
 - Website built using flask
 
 ## Dependencies
@@ -161,9 +161,10 @@ Using an SQL type database, for example, will drastically improve performance.
 
 ___
 
--Jeroz
+-Jeroz and Alpha
 
-https://github.com/jeroz1/Meownodes
-https://github.com/MeowcoinCommunity/Meownodes
+https://github.com/jeroz1/ravennodes
+https://github.com/rvnminers-A-and-N/AIPGnodes
+https://github.com/AIPowerGrid/AIPGnodes
 
 

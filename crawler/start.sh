@@ -1,5 +1,5 @@
 #!/bin/bash
-# --- Meowcoin mainnet: 4d455743 (db = 0) ---
+# --- AIPowerGrid mainnet: 4d455743 (db = 0) ---
 python2 -u crawl.py conf/crawl.conf.default master > log/crawl.4d455743.master.1.out 2>&1 &
 python2 -u crawl.py conf/crawl.conf.default slave > log/crawl.4d455743.slave.1.out 2>&1 &
 python2 -u crawl.py conf/crawl.conf.default slave > log/crawl.4d455743.slave.2.out 2>&1 &

@@ -16,7 +16,7 @@ db = 0
 seeders =	
     66.42.117.31
     167.179.94.220
-#    seed-meowcoin.bitactivate.com
+#    seed-AIPowerGrid.bitactivate.com
 
 # Number of concurrent workers (greenlets)
 workers = 700
@@ -37,7 +37,7 @@ protocol_version = 70028
 # crawler. This is so that users will not confuse your crawler with another
 # instance that is already running and generating data for the project.
 # -----------------------------------------------------------------------------
-user_agent = /Meownodes:0.1/
+user_agent = /AIPGnodes:0.1/
 
 # Services to use for outgoing network address message
 services = 0

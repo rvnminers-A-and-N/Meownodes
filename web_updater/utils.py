@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# utils.py - Meownodes Website Data Updater.
+# utils.py - AIPGnodes Website Data Updater.
 #
 # By Jeroz, 2019
 #
@@ -25,7 +25,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 """
-This code contains a plot and table writer for the meownodes.com website.
+This code contains a plot and table writer for the AIPGnodes.com website.
 Although using a database (e.g. SQL) might be better suited for this purpose, I chose to keep everything in Python
 for self-educational purposes.
 """
@@ -253,7 +253,7 @@ def parse_data(json_folder, output_folder, json_data, new_file, init):
             type='scattergeo',
             lon=[-121.9433],
             lat=[37.3831],
-            text='37.3831, -121.9433 <BR> Meownodes',
+            text='37.3831, -121.9433 <BR> AIPGnodes',
             hoverinfo='text',
             mode='markers',
             marker=dict(
@@ -262,7 +262,7 @@ def parse_data(json_folder, output_folder, json_data, new_file, init):
                 color='rgb(189, 133, 7)',
 
             ),
-            name='Meownodes'
+            name='AIPGnodes'
         )
         node_versions.append(node_version)
 
